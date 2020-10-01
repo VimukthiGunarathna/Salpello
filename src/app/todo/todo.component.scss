@@ -25,13 +25,23 @@
         .profile-content {
             display: flex;
             justify-content: flex-end;
+            padding: 40px 10px 10px 10px;
             .profile-img-box {
-                img {
-                    width: 17em;
-                }
+                width: 5em;
+                height: 5em;
+                background-image: url("../../assets/pro_Pic.jpg");
+                border-radius: 50%;
+                background-size: cover;
             }
             .profile-details-box {
-    
+                text-align: start;
+                padding: 0px 10px 0px 0px;
+                h4 {
+
+                }
+                p{
+                    color: #60CCF4;
+                }
             }
         }
     }
