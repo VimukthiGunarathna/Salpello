@@ -49,12 +49,12 @@
                             <div class="todo-title">{{item.title}}</div>
                             <div class="todo-date">{{item.date}}</div>
                             <div class="todo-panel">
-                                <fa-icon class="todo-icon" [icon]="['fas', 'trash']"></fa-icon>
+                                <fa-icon class="todo-icon trash" [icon]="['fas', 'trash']" (click)="deleteItem(item)"></fa-icon>
                                 <div class="dropdown">
                                     <fa-icon class="todo-icon " [icon]="['fas', 'ellipsis-v']" id="dropdownMenuButton"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></fa-icon>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item">Edit</a>
                                         <a class="dropdown-item" href="#">View</a>
                                     </div>
                                 </div>

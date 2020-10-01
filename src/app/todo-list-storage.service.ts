@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-const storageName = 'aah_todo_list';
+const todoStorage = 'todo';
+const doneStorage = 'done';
+const progressStorage = 'progress';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ export class TodoListStorageService {
   private todoList;
   private doneList;
   private inProgressList;
-  public defaultList = [
+  public default_todoList = [
     {
       title: 'Get up',
       date: '2020/12/12',
@@ -34,7 +36,7 @@ export class TodoListStorageService {
       isDeleted: false
     }
   ];
-  public done = [
+  public default_doneList = [
     {
       title: 'Run 10km',
       date: '2020/12/12',
@@ -54,7 +56,7 @@ export class TodoListStorageService {
       isDeleted: false
     },
   ];
-  public in_progress = [
+  public default_inProgressList = [
     {
       title: 'Brush teeth',
       date: '2020/12/12',
@@ -81,13 +83,13 @@ export class TodoListStorageService {
     }
   ];
   constructor() {
-    this.todoList = JSON.parse(localStorage.getItem(storageName)) || this.defaultList;
-    this.doneList = JSON.parse(localStorage.getItem(storageName)) || this.done;
-    this.inProgressList = JSON.parse(localStorage.getItem(storageName)) || this.in_progress;
+    this.todoList = JSON.parse(localStorage.getItem(todoStorage)) || this.default_todoList;
+    this.doneList = JSON.parse(localStorage.getItem(doneStorage)) || this.default_doneList;
+    this.inProgressList = JSON.parse(localStorage.getItem(progressStorage)) || this.default_inProgressList;
   }
 
   // get items
-  getTodoList() {
+  getToDoList() {
     return [...this.todoList];
   }
   getDoneList() {
@@ -118,12 +120,12 @@ export class TodoListStorageService {
 
   // Helper methods
   private updateStorage() {
-    localStorage.setItem(storageName, JSON.stringify(this.todoList));
-    return this.getTodoList();
+    localStorage.setItem(todoStorage, JSON.stringify(this.todoList));
+    return this.getToDoList();
   }
 
   private findItemIndex(item) {
-    return this.todoList.indexOf(item);
+    return this.todoList.indexOf(item.title);
   }
 
 }

@@ -8,11 +8,22 @@ export class TodoListService {
 
   constructor(private storage: TodoListStorageService) { }
 
-  getTodoList() {
-    return this.storage.getTodoList();
+  getList(type) {
+    if (type == "todo") {
+      return this.storage.getToDoList();
+    }
+    if (type == "done") {
+      return this.storage.getDoneList();
+    }
+    if (type == "progress") {
+      return this.storage.getInProgressList();
+    }
   }
 
   addItem(item) {
     return this.storage.post(item);
+  }
+  deleteItem(item){
+    return this.storage.delete(item);
   }
 }
