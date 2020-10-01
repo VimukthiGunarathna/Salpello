@@ -1,0 +1,41 @@
+.white-container {
+    background-color: white;
+    min-height: stretch;
+    max-height: max-content;
+}
+.header-box {
+    display: flex;
+    .logo-wrapper {
+        position: relative;
+        .logo-box {
+            text-align: start;
+            img {
+                width: 17em;
+            }
+        }
+        .logo-title {
+            position: absolute;
+            top: 100px;
+            left: 140px;
+            color: #60CCF4;
+        }
+    }
+    .profile-wrapper {
+        text-align: end;
+        .profile-content {
+            display: flex;
+            justify-content: flex-end;
+            .profile-img-box {
+                img {
+                    width: 17em;
+                }
+            }
+            .profile-details-box {
+    
+            }
+        }
+    }
+}
+.middle-box {
+
+}
