@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TodoListStorageService } from './todo-list-storage.service';
 
 
 @NgModule({
@@ -21,9 +23,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [TodoListStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

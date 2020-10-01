@@ -8,18 +8,49 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class TodoComponent implements OnInit {
   todo = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
+    {
+      title:'Get up',
+      date:'2020/12/12',
+      description:'hALAL'
+    },
+    {
+      title:'Pick up groceries',
+      date:'2020/12/12',
+      description:'hALAL'
+    },
+    {
+      title:'Go home',
+      date:'2020/12/12',
+      description:'hALAL'
+    },
+    {
+      title:'Fall asleep',
+      date:'2020/12/12',
+      description:'hALAL'
+    }
   ];
 
   done = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
+    {
+      title:'Brush teeth',
+      date:'2020/12/12',
+      description:'hALAL'
+    },
+    {
+      title:'Take a shower',
+      date:'2020/12/12',
+      description:'hALAL'
+    },
+    {
+      title:'Check e-mail',
+      date:'2020/12/12',
+      description:'hALAL'
+    },
+    {
+      title: 'Walk dog',
+      date:'2020/12/12',
+      description:'hALAL'
+    }   
   ];
 
   constructor() { }

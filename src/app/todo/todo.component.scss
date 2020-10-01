@@ -115,7 +115,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    // justify-content: space-between;
+    justify-content: space-evenly;
     box-sizing: border-box;
     cursor: move;
     background: white;
@@ -156,13 +156,17 @@
         cursor: pointer;
     }
 }
-.todo-content {
-    margin-left: 24px;
+.todo-title {
+    // margin-left: 20px;
+}
+.todo-date{
+
 }
 .todo-panel{
-    padding-left: 11em;
+    // padding-left: 6em;
+    display: flex;
     .todo-icon {
-        padding: 10px;
+        padding-left: 10px;
     }
     &:hover  {
         cursor: pointer;
