@@ -73,6 +73,17 @@
         border-radius: 15px;
         background-color:#60ccf429;
         margin: 0px 20px 0px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        fa-icon {
+            font-size: 35px;
+            color: #60CCF4;
+            border-radius: 10px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
 
 }

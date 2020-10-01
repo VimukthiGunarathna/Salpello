@@ -11,12 +11,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TodoListStorageService } from './todo-list-storage.service';
+import { TodoItemComponent } from './todo/todo-item/todo-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddItemComponent } from './todo/add-item/add-item.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent
+    TodoComponent,
+    TodoItemComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,8 @@ import { TodoListStorageService } from './todo-list-storage.service';
     FontAwesomeModule,
     BrowserAnimationsModule,
     DragDropModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [TodoListStorageService],
   bootstrap: [AppComponent]

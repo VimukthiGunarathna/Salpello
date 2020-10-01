@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-todo',
@@ -7,55 +9,91 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-  todo = [
+  public todoItemForm: FormGroup
+  public current_date;
+  public todoItem;
+  public todo = [
     {
-      title:'Get up',
-      date:'2020/12/12',
-      description:'hALAL'
+      title: 'Get up',
+      date: '2020/12/12',
+      description: 'hALAL',
+      isDeleted: false
     },
     {
-      title:'Pick up groceries',
-      date:'2020/12/12',
-      description:'hALAL'
+      title: 'Pick up groceries',
+      date: '2020/12/12',
+      description: 'hALAL',
+      isDeleted: false
     },
     {
-      title:'Go home',
-      date:'2020/12/12',
-      description:'hALAL'
+      title: 'Go home',
+      date: '2020/12/12',
+      description: 'hALAL',
+      isDeleted: false
     },
     {
-      title:'Fall asleep',
-      date:'2020/12/12',
-      description:'hALAL'
+      title: 'Fall asleep',
+      date: '2020/12/12',
+      description: 'hALAL',
+      isDeleted: false
     }
   ];
-
-  done = [
+  public in_progress = [
     {
-      title:'Brush teeth',
-      date:'2020/12/12',
-      description:'hALAL'
+      title: 'Brush teeth',
+      date: '2020/12/12',
+      description: 'hALAL',
+      isDeleted: false
     },
     {
-      title:'Take a shower',
-      date:'2020/12/12',
-      description:'hALAL'
+      title: 'Take a shower',
+      date: '2020/12/12',
+      description: 'hALAL',
+      isDeleted: false
     },
     {
-      title:'Check e-mail',
-      date:'2020/12/12',
-      description:'hALAL'
+      title: 'Check e-mail',
+      date: '2020/12/12',
+      description: 'hALAL',
+      isDeleted: false
     },
     {
       title: 'Walk dog',
-      date:'2020/12/12',
-      description:'hALAL'
-    }   
+      date: '2020/12/12',
+      description: 'hALAL',
+      isDeleted: false
+    }
   ];
 
-  constructor() { }
+  public done = [
+    {
+      title: 'Run 10km',
+      date: '2020/12/12',
+      description: 'hALAL',
+      isDeleted: false
+    },
+    {
+      title: 'Talk to sister',
+      date: '2020/12/12',
+      description: 'hALAL',
+      isDeleted: false
+    },
+    {
+      title: 'Go on a trip',
+      date: '2020/12/12',
+      description: 'hALAL',
+      isDeleted: false
+    },
+  ];
+  constructor(
+    private tdForm: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.todoItemForm = this.tdForm.group({
+      title: '',
+      description: '',
+    });
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -67,5 +105,22 @@ export class TodoComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
     }
+  }
+  onSubmit() {
+    let temp;
+    temp = this.todoItemForm.getRawValue();
+    this.todoItem = {
+      title: temp.title,
+      description: temp.description,
+      created_date: this.getDate()
+    }
+    console.log(this.todoItem);
+    this.todo.push(this.todoItem);
+    console.log(this.todo);
+
+  }
+  getDate() {
+    this.current_date = new Date();
+    return this.current_date;
   }
 }
