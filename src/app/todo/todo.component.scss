@@ -59,43 +59,115 @@
 .middle-box {
     .card-wrapper {
         display: flex;
+        padding: 30px 30px 0px 30px;
+        padding-left: 3em;
     }
-    .todo-card {
-        border: 1px solid rgba(0,0,0,.15);
+    .card {
+        border: 1px solid rgb(0 0 0 / 1%);
+        border-radius: 15px;
+        background-color:#60ccf429;
+        margin: 0px 20px 0px 20px;
+    }
+    .add-card {
+        border: 1px solid rgb(0 0 0 / 1%);
+        border-radius: 15px;
+        background-color:#60ccf429;
+        margin: 0px 20px 0px 20px;
     }
 
 }
 
-.example-container {
+.list-container {
     width: 400px;
     max-width: 100%;
     margin: 0 25px 25px 0;
     display: inline-block;
     vertical-align: top;
+    .title-box {
+        padding-top: 20px;
+        padding-left: 10px;
+        display: flex;
+        .title-wrapper {
+            display: flex;
+            justify-content: start;
+        }
+        .panel-wrapper {
+            display: flex;
+            justify-content: end;
+        }
+        .panel {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .header-title{
+            display: flex;
+            justify-content:flex-start
+        }
+    }
   }
   
-  .example-list {
-    border: solid 1px #ccc;
-    min-height: 60px;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-    display: block;
-  }
+.list {
+}
   
-  .example-box {
+.list-box{
     padding: 20px 10px;
-    border-bottom: solid 1px #ccc;
     color: rgba(0, 0, 0, 0.87);
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
     box-sizing: border-box;
     cursor: move;
     background: white;
     font-size: 14px;
-  }
+    margin: 0px 0px 15px 0px;
+    border-radius: 15px;
+}
+
+.add-item {
+    background: white;
+    cursor: pointer;
+    padding: 20px 10px;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    // justify-content: space-between;
+    box-sizing: border-box;
+    font-size: 14px;
+    margin: 0px 0px 15px 0px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    fa-icon {
+        font-size: 35px;
+        color: #60CCF4;
+        border-radius: 10px;
+    }
+}
+.user-avatar{
+    width: 40px;
+    height: 40px;
+    background-image: url("../../assets/pro_Pic.jpg");
+    border-radius: 30%;
+    background-size: cover;
+    margin-left: 20px;  
+    &:hover  {
+        cursor: pointer;
+    }
+}
+.todo-content {
+    margin-left: 24px;
+}
+.todo-panel{
+    padding-left: 11em;
+    .todo-icon {
+        padding: 10px;
+    }
+    &:hover  {
+        cursor: pointer;
+    }
+}
   
   .cdk-drag-preview {
     box-sizing: border-box;
