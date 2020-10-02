@@ -13,73 +13,62 @@ export class TodoListStorageService {
   public default_todoList = [
     {
       title: 'Get up',
-      date: '2020/12/12',
-      description: 'hALAL',
-      isDeleted: false
+      created_date: '2020/12/12',
+      description: 'hALAL'
     },
     {
       title: 'Pick up groceries',
-      date: '2020/12/12',
-      description: 'hALAL',
-      isDeleted: false
+      created_date: '2020/12/12',
+      description: 'hALAL'
     },
     {
       title: 'Go home',
-      date: '2020/12/12',
-      description: 'hALAL',
-      isDeleted: false
+      created_date: '2020/12/12',
+      description: 'hALAL'
     },
     {
       title: 'Fall asleep',
-      date: '2020/12/12',
-      description: 'hALAL',
-      isDeleted: false
+      created_date: '2020/12/12',
+      description: 'hALAL'
     }
   ];
   public default_doneList = [
     {
       title: 'Run 10km',
-      date: '2020/12/12',
-      description: 'hALAL',
-      isDeleted: false
+      created_date: '2020/12/12',
+      description: 'hALAL'
     },
     {
       title: 'Talk to sister',
-      date: '2020/12/12',
-      description: 'hALAL',
-      isDeleted: false
+      created_date: '2020/12/12',
+      description: 'hALAL'
     },
     {
       title: 'Go on a trip',
-      date: '2020/12/12',
-      description: 'hALAL',
-      isDeleted: false
+      created_date: '2020/12/12',
+      description: 'hALAL'
     },
   ];
   public default_inProgressList = [
     {
       title: 'Brush teeth',
-      date: '2020/12/12',
-      description: 'hALAL',
-      isDeleted: false
+      created_date: '2020/12/12',
+      description: 'hALAL'
     },
     {
       title: 'Take a shower',
-      date: '2020/12/12',
-      description: 'hALAL',
-      isDeleted: false
+      created_date: '2020/12/12',
+      description: 'hALAL'
     },
     {
       title: 'Check e-mail',
-      date: '2020/12/12',
-      description: 'hALAL',
-      isDeleted: false
+      created_date: '2020/12/12',
+      description: 'hALAL'
     },
     {
       title: 'Walk dog',
-      date: '2020/12/12',
-      description: 'hALAL',
-      isDeleted: false
+      created_date: '2020/12/12',
+      description: 'hALAL'
     }
   ];
   constructor() {
@@ -107,7 +96,7 @@ export class TodoListStorageService {
 
   // update an item
   put(item, changes) {
-    Object.assign(this.todoList[this.findItemIndex(item)], changes);
+    Object.assign(this.default_todoList[this.findItemIndex(item)], changes);
     return this.updateStorage();
   }
 
@@ -117,6 +106,9 @@ export class TodoListStorageService {
     return this.updateStorage();
   }
 
+  validateTitle(title: string) {
+    return this.findItemIndexofTitle(title)
+  }
 
   // Helper methods
   private updateStorage() {
@@ -125,7 +117,10 @@ export class TodoListStorageService {
   }
 
   private findItemIndex(item) {
-    return this.todoList.indexOf(item.title);
+    return this.todoList.indexOf(item);
   }
 
+  private findItemIndexofTitle(title) {
+    return this.todoList.map(function (e) { return e.title; }).indexOf(title);
+  }
 }
