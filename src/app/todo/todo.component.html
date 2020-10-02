@@ -70,13 +70,13 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h2 class="modal-title" id="staticBackdropLabel">{{selected_Item?.title}}</h2>
+                                    <h1 class="modal-title" id="staticBackdropLabel">{{selected_Item?.title}}</h1>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
-                                    <p>{{selected_Item?.description}}</p>
+                                <div class="modal-body view-item">
+                                    <h2>{{selected_Item?.description}}</h2>
                                     <p>{{selected_Item?.created_date}}</p>
                                 </div>
                             </div>
@@ -146,6 +146,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- PROGRESS CARD -->
             <div class="col-lg-3 card">
                 <div class="list-container">
                     <div class="title-box">
@@ -162,6 +164,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- DONE CARD -->
             <div class="col-lg-3 card">
                 <div class="list-container">
                     <div class="title-box">
@@ -175,8 +179,39 @@
                             <div class="todo-date">{{item.created_date}}</div>
                         </div>
                     </div>
+                    <div class="done-items-wrapper">
+                        <div class="deleted-items">
+                            <a data-toggle="modal" data-target="#deletedItems">View deleted items</a>
+                        </div>
+                        <div class="done-items">
+                            <a>View done items</a>
+                        </div>
+                    </div>
+                    <!-- DELETE ITEMS MODAL -->
+                    <div class="modal fade" id="deletedItems" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title" id="staticBackdropLabel">Deleted Items</h1>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" *ngFor="let item of deleted_items">
+                                    <div class="list-box">
+                                        <div class="user-avatar"></div>
+                                        <div class="todo-title">{{item.title}}</div>
+                                        <div class="todo-date">{{item.created_date}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- ADD CARD -->
             <div class="col-lg-1 add-card">
                 <fa-icon [icon]="['fas', 'plus-square']"></fa-icon>
             </div>

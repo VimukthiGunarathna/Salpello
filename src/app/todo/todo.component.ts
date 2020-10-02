@@ -12,19 +12,22 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
+
+  // Form data
   public todoItemForm: FormGroup;
   public updateItemForm: FormGroup
 
-
-  public isExpand = false;
+  // Functional variables
   public current_date;
   public todoItem;
   public updateItem;
   public selected_Item;
 
+  // Collections for cards 
   public todo;
   public done;
   public in_progress;
+  public deleted_items;
 
   constructor(
     private tdForm: FormBuilder,
@@ -36,6 +39,7 @@ export class TodoComponent implements OnInit {
     this.todo = this.todoListService.getList('todo');
     this.done = this.todoListService.getList('done');
     this.in_progress = this.todoListService.getList('progress');
+    this.deleted_items = this.todoListService.getList('deleted');
 
     this.todoItemForm = this.tdForm.group({
       title: ['', [Validators.required], this.todoListService.isTitleValid.bind(this.todoListService)],
@@ -68,7 +72,7 @@ export class TodoComponent implements OnInit {
   }
 
   /**
-   * New todo item creationg
+   * New todo item creation
    */
   onSubmit() {
     if (this.todoItemForm.valid) {
@@ -92,9 +96,6 @@ export class TodoComponent implements OnInit {
     console.log(item);
 
     this.selected_Item = item;
-  }
-  viewItem() {
-    this.isExpand = true;
   }
 
   addTodoItem(todoItem) {

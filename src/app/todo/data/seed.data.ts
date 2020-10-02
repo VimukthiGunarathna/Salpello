@@ -2,7 +2,7 @@ export const default_todoList = [
     {
         title: 'Get up',
         created_date: '2020/12/12',
-        description: 'hALAL'
+        description: 'My name is vimukthi gunarathna. Im a software Engineer'
     },
     {
         title: 'Pick up groceries',
@@ -55,6 +55,18 @@ export const default_todoList = [
     },
     {
         title: 'Walk dog',
+        created_date: '2020/12/12',
+        description: 'hALAL'
+    }
+];
+export const default_deletedItems= [
+    {
+        title: 'Brush teeth',
+        created_date: '2020/12/12',
+        description: 'hALAL'
+    },
+    {
+        title: 'Take a shower',
         created_date: '2020/12/12',
         description: 'hALAL'
     }

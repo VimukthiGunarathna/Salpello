@@ -9,6 +9,10 @@ export class TodoListService {
 
   constructor(private storage: TodoListStorageService) { }
 
+  /**
+   * Get initial data collection
+   * @param type : Type of data points
+   */
   getList(type) {
     if (type == "todo") {
       return this.storage.getToDoList();
@@ -19,17 +23,39 @@ export class TodoListService {
     if (type == "progress") {
       return this.storage.getInProgressList();
     }
+    if (type == "deleted") {
+      return this.storage.getInProgressList();
+    }
   }
+
+  /**
+   * Add item to the local storage
+   * @param item : Target item
+   */
   addItem(item) {
     return this.storage.post(item);
   }
+
+  /**
+  * Add item to the local storage
+  * @param item : Target item
+  */
   deleteItem(item) {
     return this.storage.delete(item);
   }
+
+  /**
+  * Add item to the local storage
+  * @param item : Target item
+  */
   updateItem(item, changes) {
     return this.storage.put(item, changes);
   }
 
+  /**
+  * String validation for title property
+  * @param userControl : user input dom values
+  */
   isTitleValid(userControl: AbstractControl) {
     return new Promise(resolve => {
       setTimeout(() => {
@@ -42,6 +68,10 @@ export class TodoListService {
     });
   }
 
+  /**
+  * Search  title string in the collection 
+  * @param title : inserted title string 
+  */
   validateTitle(title: string) {
     console.log(this.storage.validateTitle(title));
     return (this.storage.validateTitle(title) > -1);
