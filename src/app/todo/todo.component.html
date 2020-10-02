@@ -11,7 +11,7 @@
         <div class="col-lg-6 profile-wrapper">
             <div class="profile-content">
                 <div class="profile-details-box">
-                    <h4>Vimukthi Gunarathna</h4>
+                    <h1>Vimukthi Gunarathna</h1>
                     <p>Software Engineer</p>
                 </div>
                 <div class="profile-img-box">
@@ -35,10 +35,10 @@
                             </div>
                         </div>
                         <div class="panel=wrapper">
-                            <div class="panel">
+                            <!-- <div class="panel">
                                 <fa-icon [icon]="['fas', 'plus']"></fa-icon>
                                 <fa-icon [icon]="['fas', 'ellipsis-v']"></fa-icon>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
@@ -54,39 +54,56 @@
                                 <div class="dropdown">
                                     <fa-icon class="todo-icon " [icon]="['fas', 'ellipsis-v']" id="dropdownMenuButton"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></fa-icon>
-
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" data-toggle="modal" data-target="#updateItem"
                                             (click)="selectedItem(item)">Edit</a>
-                                        <a class="dropdown-item" href="#">View</a>
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#viewItem"
+                                            (click)="selectedItem(item)">View</a>
                                     </div>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="updateItem" data-backdrop="static" data-keyboard="false"
-                                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h2 class="modal-title" id="staticBackdropLabel">Update Your Todo's
-                                                        List
-                                                    </h2>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form [formGroup]="updateItemForm">
-                                                        <input formControlName="title" placeholder="sd">
-                                                        <input formControlName="description" placeholder="asd">
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                                        (click)="editItem(item)">Update</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Update Todo's Modal -->
+                    <div class="modal fade" id="viewItem" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title" id="staticBackdropLabel">{{selected_Item?.title}}</h2>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>{{selected_Item?.description}}</p>
+                                    <p>{{selected_Item?.created_date}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Edit Todo's Modal -->
+                    <div class="modal fade" id="updateItem" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title" id="staticBackdropLabel">Update Your Todo's
+                                        List
+                                    </h2>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form [formGroup]="updateItemForm">
+                                        <input formControlName="title">
+                                        <input formControlName="description">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        (click)="editItem()">Update</button>
                                 </div>
                             </div>
                         </div>
@@ -150,8 +167,8 @@
                     <div class="title-box">
                         <h2>Done</h2>
                     </div>
-                    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
-                        [cdkDropListConnectedTo]="[inProgress]" class="list" (cdkDropListDropped)="drop($event)">
+                    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[]"
+                        class="list" (cdkDropListDropped)="drop($event)">
                         <div class="list-box" *ngFor="let item of done" cdkDrag>
                             <div class="user-avatar"></div>
                             <div class="todo-title">{{item.title}}</div>
@@ -164,7 +181,5 @@
                 <fa-icon [icon]="['fas', 'plus-square']"></fa-icon>
             </div>
         </div>
-
     </div>
-
 </div>

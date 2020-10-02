@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Dependencies 
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -16,6 +16,7 @@ import { TodoComponent } from './todo/todo.component';
 
 // Service
 import { TodoListStorageService } from './todo-list-storage.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -31,7 +32,9 @@ import { TodoListStorageService } from './todo-list-storage.service';
     BrowserAnimationsModule,
     DragDropModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [TodoListStorageService],
   bootstrap: [AppComponent]
