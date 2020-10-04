@@ -259,6 +259,22 @@
   }
 }
 
+.update-form {
+  .input-label {
+    font-size: 14px;
+    font-weight: 800;
+  }
+  .form-inputs {
+    margin-bottom: 10px;
+  }
+}
+.update-btn {
+    background-color: #4FCE71;
+    border: none !important;
+    border-radius: 10px;
+    width: 20%;
+}
+
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: 4px;
