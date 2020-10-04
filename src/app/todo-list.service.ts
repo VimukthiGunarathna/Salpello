@@ -24,7 +24,7 @@ export class TodoListService {
       return this.storage.getInProgressList();
     }
     if (type == "deleted") {
-      return this.storage.getInProgressList();
+      return this.storage.getDeletedItems();
     }
   }
 
@@ -52,6 +52,16 @@ export class TodoListService {
     return this.storage.put(item, changes);
   }
 
+  /**
+   *  Replace the collections in the  local storage
+   * @param todo : updated todo Collection
+   * @param deleted : updated deleted Collection
+   * @param progress :updated in progress Collection
+   * @param done :updated done Collection
+   */
+  replaceCollection(todo, deleted, progress, done) {
+    this.storage.replaceStorageCollections(todo,deleted,progress,done);
+  }
   /**
   * String validation for title property
   * @param userControl : user input dom values

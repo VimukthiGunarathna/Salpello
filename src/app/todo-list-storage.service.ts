@@ -8,6 +8,7 @@ import { default_inProgressList, default_todoList, default_doneList, default_del
 const todoStorage = 'todo';
 const doneStorage = 'done';
 const progressStorage = 'progress';
+const deleteStorage = 'delete';
 
 @Injectable({
   providedIn: 'root'
@@ -16,56 +17,67 @@ export class TodoListStorageService {
   private todoList;
   private doneList;
   private inProgressList;
-  private deletedItems;
+  private deletedItemsList;
 
   constructor(private httpClient: HttpClient) {
+    if (this.todoList = JSON.parse(localStorage.getItem(todoStorage)) == null) {
+      console.log('hi');
+    }
     this.todoList = JSON.parse(localStorage.getItem(todoStorage)) || default_todoList;
     this.doneList = JSON.parse(localStorage.getItem(doneStorage)) || default_doneList;
     this.inProgressList = JSON.parse(localStorage.getItem(progressStorage)) || default_inProgressList;
-    this.deletedItems = JSON.parse(localStorage.getItem(progressStorage)) || default_deletedItems;
+    this.deletedItemsList = JSON.parse(localStorage.getItem(deleteStorage)) || default_deletedItems;
   }
+
   // GET calls
-  getToDoList() {
+  public getToDoList() {
     if (this.todoList != null) {
       return [...this.todoList];
     }
   }
-  getDoneList() {
+  public getDoneList() {
     if (this.doneList != null) {
       return [...this.doneList];
     }
   }
-  getInProgressList() {
+  public getInProgressList() {
     if (this.inProgressList != null) {
       return [...this.inProgressList];
     }
   }
-  getDeletedItems() {
-    if (this.deletedItems != null) {
-      return [...this.deletedItems];
+  public getDeletedItems() {
+    if (this.deletedItemsList != null) {
+      return [...this.deletedItemsList];
     }
   }
 
+
   // POST calls
-  post(item) {
+  public post(item) {
     this.todoList.push(item);
     return this.updateStorage();
   }
 
   // UPDATE calls
-  put(item, changes) {
+  public put(item, changes) {
     Object.assign(this.todoList[this.findItemIndex(item)], changes);
     return this.updateStorage();
   }
+  public replaceStorageCollections(todo, deleted, progress, done) {
+    localStorage.setItem(todoStorage, JSON.stringify(todo));
+    localStorage.setItem(doneStorage, JSON.stringify(done));
+    localStorage.setItem(progressStorage, JSON.stringify(progress));
+    localStorage.setItem(deleteStorage, JSON.stringify(deleted));
+  }
 
   // DELETE calls
-  delete(item) {
+  public delete(item) {
     this.todoList.splice(this.findItemIndex(item), 1);
     return this.updateStorage();
   }
 
 
-  validateTitle(title: string) {
+  public validateTitle(title: string) {
     return this.findItemIndexofTitle(title)
   }
 

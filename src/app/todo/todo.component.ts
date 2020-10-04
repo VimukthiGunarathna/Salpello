@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { TodoListStorageService } from '../todo-list-storage.service';
 import { TodoListService } from '../todo-list.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { NavigationStart, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-todo',
@@ -29,10 +32,14 @@ export class TodoComponent implements OnInit {
   public in_progress;
   public deleted_items;
 
+
+
+
   constructor(
     private tdForm: FormBuilder,
     private todoListService: TodoListService,
-    private httpService: HttpClient
+    private httpService: HttpClient,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -57,10 +64,22 @@ export class TodoComponent implements OnInit {
   }
 
   /**
+   * Handling the browser refresh event to 
+   * execute the replace collection function
+   * @param event : browser refresh event
+   */
+  @HostListener("window:beforeunload", ["$event"]) unloadHandler(event: Event) {
+    console.log("Processing beforeunload...");
+    if ((this.todo && this.deleted_items && this.done && this.in_progress) != null) {
+      this.todoListService.replaceCollection(this.todo, this.deleted_items, this.in_progress, this.done);
+    }
+  }
+
+  /**
    * Drag and drop functionality
    * @param event 
    */
-  drop(event: CdkDragDrop<string[]>) {
+  public drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -74,7 +93,7 @@ export class TodoComponent implements OnInit {
   /**
    * New todo item creation
    */
-  onSubmit() {
+  public onSubmit() {
     if (this.todoItemForm.valid) {
       let temp;
       temp = this.todoItemForm.getRawValue();
@@ -92,17 +111,18 @@ export class TodoComponent implements OnInit {
    * Currently selected item
    * @param item : Selected item 
    */
-  selectedItem(item) {
+  public selectedItem(item) {
     console.log(item);
 
     this.selected_Item = item;
   }
 
-  addTodoItem(todoItem) {
+  private addTodoItem(todoItem) {
     this.todo = this.todoListService.addItem(todoItem);
   }
 
   deleteItem(todoItem) {
+    this.deleted_items.push(todoItem);
     this.todo = this.todoListService.deleteItem(todoItem);
   }
 
