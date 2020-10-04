@@ -104,7 +104,7 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary update-btn" data-dismiss="modal"
+                                    <button type="button" class="btn btn-secondary form-btn" data-dismiss="modal"
                                         (click)="editItem()">Update</button>
                                 </div>
                             </div>
@@ -127,20 +127,19 @@
                                     <div class="modal-body">
                                         <form [formGroup]="todoItemForm">
                                             <div class="form-group">
-                                                <input class="form-control" formControlName="title" placeholder="Title">
+                                                <input class="form-control form-inputs" formControlName="title" placeholder="Title">
                                                 <span class="text-danger"
                                                     *ngIf="todoItemFormControl.title.touched && todoItemFormControl.title.errors?.titleNotAvailable">
                                                     This title is already taken
                                                 </span>
-                                                <input class="form-control" formControlName="description"
+                                                <input class="form-control form-inputs" formControlName="description"
                                                     placeholder="Description">
                                             </div>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        <button class="btn btn-secondary  form-btn" type="button" data-dismiss="modal"
                                             (click)="onSubmit()">Save</button>
-                                        <button type="button" class="btn btn-primary">Close</button>
                                     </div>
                                 </div>
                             </div>

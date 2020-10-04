@@ -264,15 +264,17 @@
     font-size: 14px;
     font-weight: 800;
   }
-  .form-inputs {
-    margin-bottom: 10px;
-  }
 }
-.update-btn {
-    background-color: #4FCE71;
-    border: none !important;
-    border-radius: 10px;
-    width: 20%;
+
+.form-btn {
+  background-color: #4FCE71;
+  border: none !important;
+  border-radius: 10px;
+  width: 20%;
+}
+
+.form-inputs {
+  margin-bottom: 10px;
 }
 
 .cdk-drag-preview {
