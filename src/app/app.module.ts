@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Dependencies 
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSquare, faCheckSquare, faCog, faPlus, faPlusSquare, faEllipsisV, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faSquare, faCheckSquare, faCog, faPlus, faPlusSquare, faEllipsisV, faTrash, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 // Components 
 import { AppComponent } from './app.component';
@@ -17,6 +17,10 @@ import { TodoComponent } from './todo/todo.component';
 // Service
 import { TodoListStorageService } from './todo-list-storage.service';
 import { HttpClientModule } from '@angular/common/http';
+
+//Materials
+import {MatSliderModule} from '@angular/material/slider';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -34,13 +38,15 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatSliderModule,
+    MatExpansionModule
   ],
   providers: [TodoListStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(private library: FaIconLibrary) {
-    library.addIcons(faSquare, faCheckSquare, faCog, faPlus,faPlusSquare,faEllipsisV,faTrash);
+    library.addIcons(faSquare, faCheckSquare, faCog, faPlus,faPlusSquare,faEllipsisV,faTrash,faAngleDown);
   }
 }
