@@ -23,6 +23,8 @@
       top: 100px;
       left: 140px;
       color: #60CCF4;
+      position: absolute;
+      top: 90px;
     }
   }
 
@@ -57,11 +59,14 @@
       .profile-details-box {
         text-align: start;
         padding: 0px 10px 0px 0px;
+        position: relative;
 
         h4 {}
 
         p {
           color: #60CCF4;
+          position: absolute;
+          top: 30px;
         }
       }
     }
@@ -153,7 +158,7 @@
   background: white;
   font-size: 14px;
   margin: 0px 0px 15px 0px;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .add-item {
@@ -257,6 +262,24 @@
   p {
     font-size: 15px;
   }
+}
+
+.update-form {
+  .input-label {
+    font-size: 14px;
+    font-weight: 800;
+  }
+}
+
+.form-btn {
+  background-color: #4FCE71;
+  border: none !important;
+  border-radius: 10px;
+  width: 20%;
+}
+
+.form-inputs {
+  margin-bottom: 10px;
 }
 
 .cdk-drag-preview {

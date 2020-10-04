@@ -64,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Update Todo's Modal -->
+                    <!-- View Todo's Modal -->
                     <div class="modal fade" id="viewItem" data-backdrop="static" data-keyboard="false" tabindex="-1"
                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -88,21 +88,22 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h2 class="modal-title" id="staticBackdropLabel">Update Your Todo's
-                                        List
+                                    <h2 class="modal-title" id="staticBackdropLabel">Update your todo card "{{selected_Item?.title}}"
                                     </h2>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
+                                <div class="modal-body update-form">
                                     <form [formGroup]="updateItemForm">
-                                        <input formControlName="title">
-                                        <input formControlName="description">
+                                        <span class="input-label">Title</span>
+                                        <input class="form-control form-inputs" formControlName="title" placeholder={{selected_Item?.title}}>
+                                        <span class="input-label">Description</span>
+                                        <input class="form-control form-inputs" formControlName="description" placeholder={{selected_Item?.description}}>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                    <button type="button" class="btn btn-secondary form-btn" data-dismiss="modal"
                                         (click)="editItem()">Update</button>
                                 </div>
                             </div>
@@ -111,7 +112,7 @@
                     <div class="add-item">
                         <fa-icon [icon]="['fas', 'plus-square']" data-toggle="modal" data-target="#staticBackdrop">
                         </fa-icon>
-                        <!-- Modal -->
+                        <!-- Add Todo's Modal -->
                         <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -125,20 +126,19 @@
                                     <div class="modal-body">
                                         <form [formGroup]="todoItemForm">
                                             <div class="form-group">
-                                                <input class="form-control" formControlName="title" placeholder="Title">
+                                                <input class="form-control form-inputs" formControlName="title" placeholder="Title">
                                                 <span class="text-danger"
                                                     *ngIf="todoItemFormControl.title.touched && todoItemFormControl.title.errors?.titleNotAvailable">
                                                     This title is already taken
                                                 </span>
-                                                <input class="form-control" formControlName="description"
+                                                <input class="form-control form-inputs" formControlName="description"
                                                     placeholder="Description">
                                             </div>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        <button class="btn btn-secondary  form-btn" type="button" data-dismiss="modal"
                                             (click)="onSubmit()">Save</button>
-                                        <button type="button" class="btn btn-primary">Close</button>
                                     </div>
                                 </div>
                             </div>
@@ -153,8 +153,8 @@
                     <div class="title-box">
                         <h2>In Progress</h2>
                     </div>
-                    <div cdkDropList #inProgress="cdkDropList" [cdkDropListData]="in_progress"
-                        [cdkDropListConnectedTo]="[todoList,doneList]" class="list" (cdkDropListDropped)="drop($event)">
+                    <div class="list" cdkDropList #inProgress="cdkDropList" [cdkDropListData]="in_progress"
+                        [cdkDropListConnectedTo]="[todoList,doneList]"  (cdkDropListDropped)="drop($event)">
                         <div class="list-box" *ngFor="let item of in_progress" cdkDrag>
                             <div class="user-avatar"></div>
                             <div class="todo-title">{{item.title}}</div>
