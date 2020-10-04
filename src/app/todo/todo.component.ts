@@ -1,12 +1,10 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DatePipe } from '@angular/common';
-import { TodoListStorageService } from '../todo-list-storage.service';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { TodoListService } from '../todo-list.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { NavigationStart, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { ThemePalette } from '@angular/material/core';
 
 
 @Component({
@@ -14,7 +12,18 @@ import { Subscription } from 'rxjs';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
+
 export class TodoComponent implements OnInit {
+  formatLabel(value: number) {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + '%';
+    }
+
+    return value;
+  }
+  color: ThemePalette = 'warn';
+  panelOpenState = false;
+
 
   // Form data
   public todoItemForm: FormGroup;
@@ -31,8 +40,6 @@ export class TodoComponent implements OnInit {
   public done;
   public in_progress;
   public deleted_items;
-
-
 
 
   constructor(

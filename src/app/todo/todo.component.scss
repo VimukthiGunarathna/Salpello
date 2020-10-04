@@ -28,6 +28,7 @@
     }
   }
 
+
   .profile-wrapper {
     text-align: end;
 
@@ -304,4 +305,36 @@
 
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.mat-form-field+.mat-form-field {
+  margin-left: 8px;
+}
+
+.mat-expansion-panel {
+  box-sizing: none;
+  display: unset;
+  margin: none;
+  border-radius: none;
+  overflow: none;
+  position: none;
+  box-shadow: none;
+  background: none;
+  color: none !important;
+  p {
+    color: black;
+  }
+
+  .progress-card-avatar {
+    width: 40px;
+    height: 40px;
+    background-image: url("../../assets/avator.png");
+    border-radius: 30%;
+    background-size: cover;
+    background-color: #60CCF4;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

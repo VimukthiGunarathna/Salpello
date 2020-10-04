@@ -88,7 +88,8 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h2 class="modal-title" id="staticBackdropLabel">Update your todo card "{{selected_Item?.title}}"
+                                    <h2 class="modal-title" id="staticBackdropLabel">Update your todo card
+                                        "{{selected_Item?.title}}"
                                     </h2>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -97,9 +98,11 @@
                                 <div class="modal-body update-form">
                                     <form [formGroup]="updateItemForm">
                                         <span class="input-label">Title</span>
-                                        <input class="form-control form-inputs" formControlName="title" placeholder={{selected_Item?.title}}>
+                                        <input class="form-control form-inputs" formControlName="title"
+                                            placeholder={{selected_Item?.title}}>
                                         <span class="input-label">Description</span>
-                                        <input class="form-control form-inputs" formControlName="description" placeholder={{selected_Item?.description}}>
+                                        <input class="form-control form-inputs" formControlName="description"
+                                            placeholder={{selected_Item?.description}}>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
@@ -126,7 +129,8 @@
                                     <div class="modal-body">
                                         <form [formGroup]="todoItemForm">
                                             <div class="form-group">
-                                                <input class="form-control form-inputs" formControlName="title" placeholder="Title">
+                                                <input class="form-control form-inputs" formControlName="title"
+                                                    placeholder="Title">
                                                 <span class="text-danger"
                                                     *ngIf="todoItemFormControl.title.touched && todoItemFormControl.title.errors?.titleNotAvailable">
                                                     This title is already taken
@@ -153,13 +157,18 @@
                     <div class="title-box">
                         <h2>In Progress</h2>
                     </div>
+                    <!-- <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1000" min="1" max="100000"
+                        [color]="color">
+                    </mat-slider> -->
                     <div class="list" cdkDropList #inProgress="cdkDropList" [cdkDropListData]="in_progress"
-                        [cdkDropListConnectedTo]="[todoList,doneList]"  (cdkDropListDropped)="drop($event)">
+                        [cdkDropListConnectedTo]="[todoList,doneList]" (cdkDropListDropped)="drop($event)">
                         <div class="list-box" *ngFor="let item of in_progress" cdkDrag>
                             <div class="user-avatar"></div>
                             <div class="todo-title">{{item.title}}</div>
                             <div class="todo-date">{{item.created_date}}</div>
-                            <div></div>
+                            <div class="todo-panel">
+                                <fa-icon class="todo-icon " [icon]="['fas', 'angle-down']"></fa-icon>
+                            </div>
                         </div>
                     </div>
                 </div>
