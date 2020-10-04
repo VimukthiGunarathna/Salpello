@@ -23,6 +23,8 @@
       top: 100px;
       left: 140px;
       color: #60CCF4;
+      position: absolute;
+      top: 90px;
     }
   }
 
@@ -57,11 +59,14 @@
       .profile-details-box {
         text-align: start;
         padding: 0px 10px 0px 0px;
+        position: relative;
 
         h4 {}
 
         p {
           color: #60CCF4;
+          position: absolute;
+          top: 30px;
         }
       }
     }
